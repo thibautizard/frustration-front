@@ -1,0 +1,35 @@
+.header {
+    padding: 15px 20px;
+    background:black;
+    position:sticky;
+    display:flex;
+    align-items: center;
+}
+
+.logo {
+    width:300px;
+    height:auto;
+}
+
+.left {
+
+}
+
+.right {
+    margin-left:auto;
+}
+
+.button {
+    outline:none;
+    border:none;
+    display: flex;
+    align-items: center;
+    padding:9px 13px 3px 13px;
+    color:black;
+    font-family:Bebas Neue;
+    font-weight: 600;
+    border-radius:3px;
+    background:#FFF200;
+    font-size:24px;
+    line-height: 24px;
+}
