@@ -1,15 +1,43 @@
 ---
-
+import { Icon } from "astro-icon";
 ---
 
-<nav>
-  <img
-    src="img/frustration.webp"
-    alt="Frustration"
-  />
-  <p>search</p>
-  <p>hamburger</p>
+<nav class="nav">
+  <a
+    href=""
+    class="logo"
+  >
+    <img
+      src="img/frustration.webp"
+      alt="Frustration"
+      width="300"
+    />
+  </a>
+
+  <Icon name="magnifying-glass-solid" />
+  <Icon name="bars-solid" />
 </nav>
 <style>
+  .nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: black;
+    color: #fff200;
+    padding: 10px 30px;
+  }
 
+  .logo {
+    margin-right: auto;
+    line-height: 0;
+  }
+
+  svg {
+    fill: #fff200;
+    width: 25px;
+  }
+
+  svg:hover {
+    cursor: pointer;
+  }
 </style>
