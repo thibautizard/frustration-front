@@ -1,13 +1,54 @@
 ---
 
 ---
-<div id="banner">
 
+<div id="banner">
+  <img
+    src="./img/jukebox.png"
+    alt=""
+  />
+  <div class="content">
+    <h3 class="objectif">OBJECTIF 1500</h3>
+    <h5 class="vous-aimez-frustration">Vous aimez Frustration ? Aidez-nous à GRANDIR !</h5>
+    <div class="progress-bar"></div>
+  </div>
 </div>
-<style>
+<style lang="scss">
   #banner {
     width: 100%;
-    height:100px;
-    background-color:var(--purple);
+    background-color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 35px;
+    height: 150px;
+
+    img {
+      height: 140px;
+      max-height: 100%;
+      align-self: end;
+    }
+
+    .content {
+      font-family: "Arca Majora 3";
+      color: #fff;
+      text-align: center;
+      align-self: center;
+
+      .objectif {
+        font-size: 47px;
+      }
+
+      .vous-aimez-frustration {
+        font-size: 20px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 30px;
+        background: #fff;
+        margin-top: 20px;
+      }
+    }
   }
 </style>
