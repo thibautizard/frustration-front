@@ -1,11 +1,20 @@
 :root {
   --purple: #5C5DB7;
+  --yellow: #FFF200;
 }
 
 @font-face {
   font-family: 'Arca Majora 3';
   src: url('/fonts/ArcaMajora3-Bold.otf') format('otf');
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BebasNeue-Bold.ttf') format('ttf');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

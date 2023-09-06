@@ -8,13 +8,13 @@ const { subtitle } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
+      type="image/x-icon"
+      href="/img/favicon_frustration.webp"
     />
     <meta
       name="viewport"
@@ -31,4 +31,11 @@ const { subtitle } = Astro.props;
     <slot />
   </body>
 </html>
-<style is:global></style>
+<style is:global>
+  body {
+    min-height: 100vh;
+    font-weight: 700;
+    box-sizing: border-box;
+    background-color: #fff200;
+  }
+</style>

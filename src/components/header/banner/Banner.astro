@@ -1,11 +1,14 @@
 ---
-
+import { Image } from "astro:assets";
+import jukeboxImage from "./assets/jukebox.png";
 ---
 
 <div id="banner">
-  <img
-    src="./img/jukebox.png"
-    alt=""
+  <Image
+    src={jukeboxImage}
+    width="300"
+    alt="jukebox playing notes"
+    class="jukebox-image"
   />
   <div class="content">
     <h3 class="objectif">OBJECTIF 1500</h3>
@@ -23,8 +26,9 @@
     gap: 35px;
     height: 150px;
 
-    img {
+    .jukebox-image {
       height: 140px;
+      width: auto;
       max-height: 100%;
       align-self: end;
     }

@@ -1,9 +1,21 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import LastArticles from "../components/accueil/LastArticles.astro";
 import "../styles/reset.css";
 import "../styles/global.css";
 ---
 
 <BaseLayout subtitle="Accueil">
-  <p> First line</p>
+  <main>
+    <LastArticles />
+  </main>
 </BaseLayout>
+<style>
+  main {
+    padding: 3vh 2vw 0 2vw;
+    max-width: 2200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

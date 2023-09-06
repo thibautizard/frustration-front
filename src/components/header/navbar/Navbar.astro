@@ -1,16 +1,18 @@
 ---
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+import frustrationLogo from "./assets/frustration.webp";
 ---
 
 <nav class="nav">
   <a
     href=""
-    class="logo"
+    class="logo-frustration"
   >
-    <img
-      src="img/frustration.webp"
-      alt="Frustration"
-      width="300"
+    <Image
+      src={frustrationLogo}
+      width="400"
+      alt="Logo de Frustration"
     />
   </a>
 
@@ -23,17 +25,22 @@ import { Icon } from "astro-icon";
     gap: 20px;
     align-items: center;
     background: black;
-    color: #fff200;
+    color: var(--yellow);
     padding: 10px 30px;
   }
 
-  .logo {
+  .logo-frustration {
     margin-right: auto;
     line-height: 0;
   }
 
+  .logo-frustration img {
+    max-width: 300px;
+    height: auto;
+  }
+
   svg {
-    fill: #fff200;
+    fill: var(--yellow);
     width: 25px;
   }
 
