@@ -1,6 +1,8 @@
 ---
+import { BASE_URL, WORDPRESS_API } from "../global";
+
 export async function getStaticPaths() {
-  const res = await fetch("https://frustrationmagazine.fr/wp-json/wp/v2/posts?_fields=slug");
+  const res = await fetch(`${BASE_URL}/${WORDPRESS_API}/posts?_fields=slug`);
   const slugs = await res.json();
   return slugs.map(({ slug }: any) => {
     return {
