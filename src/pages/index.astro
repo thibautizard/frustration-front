@@ -10,8 +10,6 @@ const res = await fetch(
   `${BASE_URL}/${WORDPRESS_API}/posts?_fields=excerpt.rendered,title,slug,og_image.url&per_page=6`
 );
 const posts_miniatures = await res.json();
-
-console.log(posts_miniatures);
 ---
 
 <BaseLayout subtitle="Accueil">

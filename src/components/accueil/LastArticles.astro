@@ -1,14 +1,21 @@
 ---
-
+const { posts } = Astro.props;
 ---
 
 <h2 class="nos-derniers-articles">Nos derniers articles</h2>
+{
+  posts.map((post: any) => (
+    <article>
+      <h5>{post.title.rendered} </h5>
+      <p>{post.excerpt.rendered}</p>
+    </article>
+  ))
+}
 
 <style>
-
-h2.nos-derniers-articles {
-  font-family: Bebas Neue;
-  font-size: 7rem;
-  letter-spacing: -0.3rem;
-}
+  h2.nos-derniers-articles {
+    font-family: Bebas Neue;
+    font-size: 7rem;
+    letter-spacing: -0.3rem;
+  }
 </style>
