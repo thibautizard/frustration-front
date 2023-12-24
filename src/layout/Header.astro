@@ -1,11 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import magnifyingGlassSolid from "../icons/magnifying-glass-solid.svg";
-import barsSolid from "../icons/bars-solid.svg";
 import MagnifyingGlassIcon from "./icons/MagnifyingGlass.astro";
 import BarsIcon from "./icons/Bars.astro";
 import BannerSubscription from "./banners/BannerSubscriptions.astro";
-import frustrationLogo from "./logo-frustration.webp";
+import frustrationLogo from "./images/logo-frustration.webp";
 ---
 
 <header>
@@ -31,8 +29,8 @@ import frustrationLogo from "./logo-frustration.webp";
     display: flex;
     gap: 20px;
     align-items: center;
-    background: black;
-    color: var(--yellow);
+    background: var(--secondary-color);
+    color: var(--primary-color);
     padding: 10px 30px;
   }
 
@@ -47,7 +45,7 @@ import frustrationLogo from "./logo-frustration.webp";
   }
 
   svg {
-    fill: var(--yellow);
+    fill: var(--primary-color);
     width: 25px;
   }
 
