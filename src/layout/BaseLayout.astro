@@ -1,5 +1,5 @@
 ---
-import Header from "../components/header/Header.astro";
+import Header from "./Header.astro";
 interface Props {
   subtitle: string;
 }
@@ -31,7 +31,7 @@ const { subtitle } = Astro.props;
     <slot />
   </body>
 </html>
-<style is:global>
+<style>
   body {
     min-height: 100vh;
     font-weight: 700;

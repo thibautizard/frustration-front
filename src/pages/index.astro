@@ -6,9 +6,7 @@ import "../styles/global.css";
 
 import { BASE_URL, WORDPRESS_API } from "../global";
 
-const res = await fetch(
-  `${BASE_URL}/${WORDPRESS_API}/posts?_fields=excerpt.rendered,title,slug,og_image.url&per_page=6`
-);
+const res = await fetch(`${BASE_URL}/${WORDPRESS_API}/posts?_fields=excerpt.rendered,title,slug,og_image.url&per_page=6`);
 const posts_miniatures = await res.json();
 ---
 
@@ -17,6 +15,7 @@ const posts_miniatures = await res.json();
     <LastArticles posts={posts_miniatures} />
   </main>
 </BaseLayout>
+
 <style>
   main {
     padding: 3vh 2vw 0 2vw;

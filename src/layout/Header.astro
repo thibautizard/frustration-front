@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import magnifyingGlassSolid from "../icons/magnifying-glass-solid.svg";
+import barsSolid from "../icons/bars-solid.svg";
+import MagnifyingGlassIcon from "./icons/MagnifyingGlass.astro";
+import BarsIcon from "./icons/Bars.astro";
+import BannerSubscription from "./banners/BannerSubscriptions.astro";
+import frustrationLogo from "./logo-frustration.webp";
+---
+
+<header>
+  <nav class="nav">
+    <a
+      href="/"
+      class="logo-frustration"
+    >
+      <Image
+        src={frustrationLogo}
+        width="400"
+        alt="Logo de Frustration"
+      />
+    </a>
+    <MagnifyingGlassIcon />
+    <BarsIcon />
+  </nav>
+  <BannerSubscription />
+</header>
+
+<style>
+  .nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: black;
+    color: var(--yellow);
+    padding: 10px 30px;
+  }
+
+  .logo-frustration {
+    margin-right: auto;
+    line-height: 0;
+  }
+
+  a.logo-frustration img {
+    max-width: 300px;
+    height: auto;
+  }
+
+  svg {
+    fill: var(--yellow);
+    width: 25px;
+  }
+
+  svg:hover {
+    cursor: pointer;
+  }
+</style>

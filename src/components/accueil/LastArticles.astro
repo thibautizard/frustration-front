@@ -2,7 +2,7 @@
 const { posts } = Astro.props;
 ---
 
-<h2 class="nos-derniers-articles">Nos derniers articles</h2>
+<h2 class="last-articles">Nos derniers articles</h2>
 {
   posts.map((post: any) => (
     <article>
@@ -13,7 +13,7 @@ const { posts } = Astro.props;
 }
 
 <style>
-  h2.nos-derniers-articles {
+  h2.last-articles {
     font-family: Bebas Neue;
     font-size: 7rem;
     letter-spacing: -0.3rem;
