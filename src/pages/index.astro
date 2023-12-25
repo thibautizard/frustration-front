@@ -13,157 +13,225 @@ const posts = await getPosts();
   <main>
     <!-- Slider for last articles -->
 
-    <!-- List of last articles -->
-    <section class="last-articles">
-      <h2 class="title">Nos derniers articles</h2>
-      <div class="posts-container">
-        {
-          posts.map(({ title, excerpt, image, date, categories }: any) => (
-            <article class="post-container">
-              <Image
-                title={image.title}
-                src={image.sourceUrl}
-                alt={image.altText}
-                width="500"
-                height="300"
-              />
-              <div class="content">
-                <div class="header">
-                  <h5
-                    class="title"
-                    set:html={title}
-                  />
-                  <div class="categories">
-                    {categories.map((category: string) => (
-                      <span class="category">{category}</span>
-                    ))}
+    <div class="first-bloc">
+      <!-- List of last articles -->
+      <section class="last-articles">
+        <h2 class="title">Derniers articles</h2>
+        <div class="posts-container">
+          {
+            posts.map(({ title, excerpt, image, date, categories }: any) => (
+              <article class="post-container">
+                <Image
+                  title={image.title}
+                  src={image.sourceUrl}
+                  alt={image.altText}
+                  width="500"
+                  height="300"
+                />
+                <div class="content">
+                  <div class="header">
+                    <h5
+                      class="title"
+                      set:html={title}
+                    />
+                    <div class="categories">
+                      {categories.map((category: string) => (
+                        <span class="category">{category}</span>
+                      ))}
+                    </div>
+                    <div class="date-container">
+                      <span class="date">{date}</span>
+                    </div>
                   </div>
-                  <div class="date-container">
-                    <span class="date">{date}</span>
-                  </div>
+                  <Fragment set:html={excerpt} />
                 </div>
-                <Fragment set:html={excerpt} />
-              </div>
-              <button type="button">Lire plus</button>
-            </article>
-          ))
-        }
-      </div>
-    </section>
+                <button type="button">Lire plus</button>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+      <!-- Separation Wave -->
+      <svg
+        class="wave"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="var(--secondary-color)"
+          fill-opacity="1"
+          d="M0,160L48,160C96,160,192,160,288,176C384,192,480,224,576,240C672,256,768,256,864,224C960,192,1056,128,1152,117.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </div>
+
+    <!-- Entretiens -->
+    <div class="second-bloc">
+      <section class="interviews">
+        <h2 class="title">Entretiens</h2>
+      </section>
+    </div>
   </main>
 </BaseLayout>
 
 <style>
   main {
-    padding: 3vh 2vw 0 2vw;
+    --inner-padding: 2vw;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("./backgrounds/asfalt-dark.png"), url("./backgrounds/frustration_background_home_desktop.webp");
-    background-repeat: repeat, no-repeat;
-    background-size: auto, cover;
-    background-position: top;
 
-    .last-articles {
-      max-width: 1800px;
-      h2.title {
-        font-family: Bebas Neue;
-        font-size: 8rem;
-        letter-spacing: -0.3rem;
-        line-height: 80%;
-        margin-bottom: 20px;
-      }
+    div.first-bloc {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url("./backgrounds/asfalt-dark.png"), url("./backgrounds/frustration_background_home_desktop.webp");
+      background-repeat: repeat, no-repeat;
+      background-size: auto, cover;
+      background-position: top;
+      background-attachment: fixed, fixed;
+      .last-articles {
+        max-width: 1800px;
+        padding: 3vh var(--inner-padding);
+        h2.title {
+          font-family: Bebas Neue;
+          font-size: 8rem;
+          letter-spacing: -0.3rem;
+          margin-bottom: 20px;
+          line-height: 80%;
+          position: relative;
+        }
 
-      h2.title::after {
-        content: "";
-        display: block;
-        width: 20%;
-        height: 10px;
-        background: black;
-      }
+        h2.title::after {
+          content: "";
+          display: block;
+          width: 20%;
+          height: 13px;
+          background: var(--secondary-color);
+        }
 
-      .posts-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        width: 100%;
-
-        article.post-container {
+        .posts-container {
           display: flex;
-          align-items: center;
-          flex-direction: column;
-          flex-basis: 32%;
-          flex-grow: 1;
-          min-width: 300px;
-          color: white;
-          background-color: var(--secondary-color);
-          cursor: pointer;
-          box-shadow: 0 0 7px 1px rgb(0 0 0 / 30%);
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+          width: 100%;
 
-          img {
-            width: 100%;
-            object-fit: cover;
-          }
-
-          .content {
-            padding: 1.5rem;
-
-            .header {
-              margin-bottom: 1rem;
-              display: flex;
-              flex-direction: column;
-              gap: 0.4rem;
-              h5.title {
-                font-family: Bebas Neue;
-                font-size: 2.2rem;
-                line-height: 100%;
-                color: var(--primary-color);
-              }
-
-              div.categories {
-                display: flex;
-                gap: 5px;
-                span.category {
-                  color: var(--secondary-color);
-                  font-size: 0.9rem;
-                  background-color: var(--primary-color);
-                  padding: 0.25rem 0.4rem 0.1rem 0.4rem;
-                  border-radius: 0.1rem;
-                  font-family: Bebas Neue;
-                  text-transform: uppercase;
-                }
-              }
-
-              div.date-container {
-                span.date {
-                  font-family: Open Sans;
-                  font-weight: 400;
-                }
-              }
-            }
-
-            p {
-              font-family: Open Sans;
-              font-weight: 400;
-            }
-          }
-
-          button {
-            margin-top: auto;
-            margin-bottom: 1.5rem;
+          article.post-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            flex-basis: 32%;
+            flex-grow: 1;
+            min-width: 300px;
+            color: white;
+            background-color: var(--secondary-color);
             cursor: pointer;
-            background: var(--primary-color);
-            outline: none;
-            border: none;
-            width: fit-content;
-            padding: 0.55rem 1.4rem 0.4rem 1.4rem;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            font-family: Bebas Neue;
-            font-weight: 600;
+            box-shadow: 0 0 7px 1px rgb(0 0 0 / 30%);
+
+            img {
+              width: 100%;
+              object-fit: cover;
+            }
+
+            .content {
+              padding: 1.5rem;
+
+              .header {
+                margin-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                h5.title {
+                  font-family: Bebas Neue;
+                  font-size: 2.2rem;
+                  line-height: 100%;
+                  color: var(--primary-color);
+                }
+
+                div.categories {
+                  display: flex;
+                  gap: 5px;
+                  span.category {
+                    color: var(--secondary-color);
+                    font-size: 0.9rem;
+                    background-color: var(--primary-color);
+                    padding: 0.25rem 0.4rem 0.1rem 0.4rem;
+                    border-radius: 0.1rem;
+                    font-family: Bebas Neue;
+                    text-transform: uppercase;
+                  }
+                }
+
+                div.date-container {
+                  span.date {
+                    font-family: Open Sans;
+                    font-weight: 400;
+                  }
+                }
+              }
+
+              p {
+                font-family: Open Sans;
+                font-weight: 400;
+                font-size: 1.1rem;
+              }
+            }
+
+            button {
+              margin-top: auto;
+              margin-bottom: 1.5rem;
+              cursor: pointer;
+              background: var(--primary-color);
+              outline: none;
+              border: none;
+              width: fit-content;
+              padding: 0.55rem 1.4rem 0.4rem 1.4rem;
+              font-size: 1.4rem;
+              text-transform: uppercase;
+              font-family: Bebas Neue;
+              font-weight: 600;
+            }
           }
+        }
+      }
+
+      svg.wave {
+        transform: translateY(10px);
+      }
+    }
+
+    div.second-bloc {
+      width: 100%;
+      background-color: var(--secondary-color);
+      .interviews {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        padding: 3vh var(--inner-padding);
+
+        h2.title {
+          text-align: center;
+          font-size: 14rem;
+          text-transform: uppercase;
+          font-family: Bebas Neue;
+          letter-spacing: -0.4rem;
+          position: relative;
+        }
+
+        h2.title::after {
+          content: "";
+          display: block;
+          width: 50%;
+          height: 10px;
+          background: white;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 2rem;
         }
       }
     }
