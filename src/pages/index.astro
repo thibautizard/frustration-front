@@ -1,27 +1,115 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import LastArticles from "../components/accueil/LastArticles.astro";
 import "../styles/reset.css";
 import "../styles/global.css";
+import { Image } from "astro:assets";
 
-import { BASE_URL, WORDPRESS_API } from "../global";
+import { getAllPostsWithSlugs } from "../lib/api";
 
-const res = await fetch(`${BASE_URL}/${WORDPRESS_API}/posts?_fields=excerpt.rendered,title,slug,og_image.url&per_page=6`);
-const posts_miniatures = await res.json();
+const posts = await getAllPostsWithSlugs();
 ---
 
 <BaseLayout subtitle="Accueil">
   <main>
-    <LastArticles posts={posts_miniatures} />
+    <section class="last-articles">
+      <h2 class="title">Derniers articles</h2>
+      <div class="posts-container">
+        {
+          posts.map(({ title, excerpt, featuredImage }: any) => (
+            <article class="post-container">
+              <Image
+                title={featuredImage.node.title}
+                src={featuredImage.node.sourceUrl}
+                alt="alt"
+                width="500"
+                height="300"
+              />
+              <div class="content">
+                <h5
+                  class="title"
+                  set:html={title}
+                />
+                <Fragment set:html={excerpt} />
+              </div>
+              <button type="button">Lire plus</button>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </main>
 </BaseLayout>
 
 <style>
   main {
     padding: 3vh 2vw 0 2vw;
-    max-width: 2200px;
     margin: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    .last-articles {
+      max-width: 1800px;
+      h2.title {
+        font-family: Bebas Neue;
+        font-size: 6rem;
+        letter-spacing: -0.3rem;
+      }
+
+      .posts-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+
+        article.post-container {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          flex-basis: 32%;
+          color: white;
+          background-color: var(--secondary-color);
+          cursor: pointer;
+          box-shadow: 0 0 7px 1px rgb(0 0 0 / 30%);
+
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+
+          .content {
+            padding: 1.5rem;
+            h5.title {
+              font-family: Bebas Neue;
+              font-size: 2.2rem;
+              margin-bottom: 0.5rem;
+              line-height: 100%;
+              color: var(--primary-color);
+            }
+
+            p {
+              font-family: Open Sans;
+              font-weight: 400;
+            }
+          }
+
+          button {
+            margin-top: auto;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            background: var(--primary-color);
+            outline: none;
+            border: none;
+            width: fit-content;
+            padding: 0.55rem 1.4rem 0.4rem 1.4rem;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-family: Bebas Neue;
+            font-weight: 600;
+          }
+        }
+      }
+    }
   }
 </style>
