@@ -19,27 +19,47 @@ async function fetchAPI(query, { variables } = {}) {
   }
 }
 
-export async function getAllPostsWithSlugs() {
-  const {
+export async function getPosts() {
+  let {
     data: { posts }
   } = await fetchAPI(`
-   query getPostsWithSlugs {
-      posts(first: 6) {
-        nodes {
-          title(format: RENDERED)
-          slug
-          excerpt(format: RENDERED)
-          featuredImage {
-            node {
-              sourceUrl(size: ET_PB_IMAGE__RESPONSIVE__DESKTOP)
-              title(format: RENDERED)
+   query getPosts {
+        posts(first: 6) {
+          nodes {
+            title(format: RENDERED)
+            slug
+            excerpt(format: RENDERED)
+            featuredImage {
+              node {
+                sourceUrl(size: ET_PB_IMAGE__RESPONSIVE__DESKTOP)
+                title(format: RENDERED)
+                altText
+              }
+            }
+            date
+            categories {
+              nodes {
+                name
+                parent {
+                  node {
+                    name
+                  }
+                }
+              }
             }
           }
         }
-      }
     }
   `);
 
-  console.log(posts.nodes[0].featuredImage);
-  return posts.nodes;
+  posts = posts.nodes.map(({ title, slug, excerpt, featuredImage: { node: image }, date, categories: { nodes: categories } }) => ({
+    title,
+    slug,
+    excerpt,
+    image,
+    date: new Date(date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }),
+    categories: categories.map((category) => (category.parent ? category.parent.node.name : category.name))
+  }));
+
+  return posts;
 }

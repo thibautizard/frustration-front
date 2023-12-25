@@ -4,31 +4,44 @@ import "../styles/reset.css";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 
-import { getAllPostsWithSlugs } from "../lib/api";
+import { getPosts } from "../lib/api";
 
-const posts = await getAllPostsWithSlugs();
+const posts = await getPosts();
 ---
 
 <BaseLayout subtitle="Accueil">
   <main>
+    <!-- Slider for last articles -->
+
+    <!-- List of last articles -->
     <section class="last-articles">
-      <h2 class="title">Derniers articles</h2>
+      <h2 class="title">Nos derniers articles</h2>
       <div class="posts-container">
         {
-          posts.map(({ title, excerpt, featuredImage }: any) => (
+          posts.map(({ title, excerpt, image, date, categories }: any) => (
             <article class="post-container">
               <Image
-                title={featuredImage.node.title}
-                src={featuredImage.node.sourceUrl}
-                alt="alt"
+                title={image.title}
+                src={image.sourceUrl}
+                alt={image.altText}
                 width="500"
                 height="300"
               />
               <div class="content">
-                <h5
-                  class="title"
-                  set:html={title}
-                />
+                <div class="header">
+                  <h5
+                    class="title"
+                    set:html={title}
+                  />
+                  <div class="categories">
+                    {categories.map((category: string) => (
+                      <span class="category">{category}</span>
+                    ))}
+                  </div>
+                  <div class="date-container">
+                    <span class="date">{date}</span>
+                  </div>
+                </div>
                 <Fragment set:html={excerpt} />
               </div>
               <button type="button">Lire plus</button>
@@ -56,10 +69,18 @@ const posts = await getAllPostsWithSlugs();
       max-width: 1800px;
       h2.title {
         font-family: Bebas Neue;
-        font-size: 6rem;
+        font-size: 8rem;
         letter-spacing: -0.3rem;
         line-height: 80%;
         margin-bottom: 20px;
+      }
+
+      h2.title::after {
+        content: "";
+        display: block;
+        width: 20%;
+        height: 10px;
+        background: black;
       }
 
       .posts-container {
@@ -88,12 +109,39 @@ const posts = await getAllPostsWithSlugs();
 
           .content {
             padding: 1.5rem;
-            h5.title {
-              font-family: Bebas Neue;
-              font-size: 2.2rem;
-              margin-bottom: 0.5rem;
-              line-height: 100%;
-              color: var(--primary-color);
+
+            .header {
+              margin-bottom: 1rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.4rem;
+              h5.title {
+                font-family: Bebas Neue;
+                font-size: 2.2rem;
+                line-height: 100%;
+                color: var(--primary-color);
+              }
+
+              div.categories {
+                display: flex;
+                gap: 5px;
+                span.category {
+                  color: var(--secondary-color);
+                  font-size: 0.9rem;
+                  background-color: var(--primary-color);
+                  padding: 0.25rem 0.4rem 0.1rem 0.4rem;
+                  border-radius: 0.1rem;
+                  font-family: Bebas Neue;
+                  text-transform: uppercase;
+                }
+              }
+
+              div.date-container {
+                span.date {
+                  font-family: Open Sans;
+                  font-weight: 400;
+                }
+              }
             }
 
             p {
@@ -104,7 +152,7 @@ const posts = await getAllPostsWithSlugs();
 
           button {
             margin-top: auto;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             cursor: pointer;
             background: var(--primary-color);
             outline: none;

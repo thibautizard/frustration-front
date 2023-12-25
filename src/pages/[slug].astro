@@ -7,13 +7,13 @@ export async function getStaticPaths() {
   return slugs.map(({ slug }: any) => {
     return {
       params: {
-        postSlug: slug
+        slug
       }
     };
   });
 }
 
-const { postSlug } = Astro.params;
+const { slug } = Astro.params;
 ---
 
-<p>This is the page for {postSlug}</p>
+<p>This is the page for {slug}</p>
