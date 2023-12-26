@@ -350,6 +350,11 @@
   resolved "https://registry.npmjs.org/@fontsource/bebas-neue/-/bebas-neue-5.0.18.tgz"
   integrity sha512-BtArXjAJqShEyDRmQoSzTrsx8AS0wMVokVabK497+1uzUu5jG+J6Fz2NX0iYybANM9XxVFLGhnx2MJ4DK8AtYw==
 
+"@fontsource/open-sans@^5.0.20":
+  version "5.0.20"
+  resolved "https://registry.npmjs.org/@fontsource/open-sans/-/open-sans-5.0.20.tgz"
+  integrity sha512-Tgdqmp9QX8YZd5TO+rEv5n5cZkTaDf0I0eHUHMe3xKxUgGR/9uKS7VYL+kiVZfMNZ/8EyMLwzcNFWVsNG6nZAg==
+
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.10.tgz"
@@ -2205,11 +2210,6 @@ functions-have-names@^1.2.2, functions-have-names@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
-
-g@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/g/-/g-2.0.1.tgz"
-  integrity sha512-Fi6Ng5fZ/ANLQ15H11hCe+09sgUoNvDEBevVgx3KoYOhsH5iLNPn54hx0jPZ+3oSWr+xajnp2Qau9VmPsc7hTA==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"

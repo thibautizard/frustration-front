@@ -11,11 +11,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("/fonts/BebasNeue-Bold.ttf") format("ttf");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
