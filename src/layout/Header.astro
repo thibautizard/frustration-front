@@ -17,37 +17,35 @@ import frustrationLogo from "./images/logo-frustration.webp";
         alt="Logo de Frustration"
       />
     </a>
-    <MagnifyingGlassIcon />
-    <BarsIcon />
+    <div class="icons">
+      <MagnifyingGlassIcon />
+      <BarsIcon />
+    </div>
   </nav>
 </header>
 
 <style>
   .nav {
     display: flex;
-    gap: 20px;
     align-items: center;
     background: var(--secondary-color);
     color: var(--primary-color);
-    padding: 10px 30px;
-  }
+    padding: clamp(6px, 1vw, 10px) clamp(10px, 2vw, 30px);
+    .logo-frustration {
+      margin-right: auto;
+      img {
+        width: clamp(120px, 20vw, 300px);
+        height: auto;
+      }
+    }
 
-  .logo-frustration {
-    margin-right: auto;
-    line-height: 0;
-  }
+    .icons {
+      display: flex;
+      gap: clamp(10px, 1.5vw, 30px);
 
-  a.logo-frustration img {
-    max-width: 300px;
-    height: auto;
-  }
-
-  svg {
-    fill: var(--primary-color);
-    width: 25px;
-  }
-
-  svg:hover {
-    cursor: pointer;
+      svg {
+        height: clamp(15px, 2vw, 25px);
+      }
+    }
   }
 </style>

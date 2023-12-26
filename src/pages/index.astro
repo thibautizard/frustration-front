@@ -18,7 +18,7 @@ const posts = await getPosts();
     <!-- Slider for last articles -->
 
     <!-- First bloc -->
-    <div class="first-bloc">
+    <div class="bloc first-bloc">
       <!-- List of last articles -->
       <section class="last-articles">
         <h2 class="title">Derniers articles</h2>
@@ -53,7 +53,7 @@ const posts = await getPosts();
     </div>
 
     <!-- Entretiens -->
-    <div class="second-bloc">
+    <div class="bloc second-bloc">
       <section class="interviews">
         <h2 class="title">Entretiens</h2>
       </section>
@@ -64,12 +64,14 @@ const posts = await getPosts();
 <style lang="sass">
   main
     --inner-padding: 2vw
-    margin: auto
     width: 100%
     display: flex
     flex-direction: column
     overflow: scroll
     align-items: center
+
+    // .bloc
+    //   display: none !important
 
     div.first-bloc
       width: 100%
@@ -122,10 +124,10 @@ const posts = await getPosts();
 
         h2.title
           text-align: center
-          font-size: 14rem
+          font-size: clamp(5rem, 24vw, 14rem)
+          line-height: clamp(5rem, 24vw, 14rem)
           text-transform: uppercase
           font-family: Bebas Neue
-          letter-spacing: -0.4rem
           position: relative
 
         h2.title::after
@@ -137,5 +139,5 @@ const posts = await getPosts();
           position: absolute
           left: 50%
           transform: translateX(-50%)
-          bottom: 2rem
+          bottom: 0
 </style>
