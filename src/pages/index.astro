@@ -3,52 +3,69 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import "../styles/reset.css";
 import "../styles/global.css";
 import { Image } from "astro:assets";
-
 import { getPosts } from "../lib/api";
+import Header from "../layout/Header.astro";
+import { MySwiper } from "../components/Swiper";
+import PostCard from "../components/cards/PostCard";
+import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
 
 const posts = await getPosts();
 ---
 
 <BaseLayout subtitle="Accueil">
   <main>
+    <BannerSubscription />
     <!-- Slider for last articles -->
 
+    <!-- First bloc -->
     <div class="first-bloc">
       <!-- List of last articles -->
       <section class="last-articles">
         <h2 class="title">Derniers articles</h2>
         <div class="posts-container">
           {
-            posts.map(({ title, excerpt, image, date, categories }: any) => (
-              <article class="post-container">
-                <Image
-                  title={image.title}
-                  src={image.sourceUrl}
-                  alt={image.altText}
-                  width="500"
-                  height="300"
-                />
-                <div class="content">
-                  <div class="header">
-                    <h5
-                      class="title"
-                      set:html={title}
-                    />
-                    <div class="categories">
-                      {categories.map((category: string) => (
-                        <span class="category">{category}</span>
-                      ))}
-                    </div>
-                    <div class="date-container">
-                      <span class="date">{date}</span>
-                    </div>
-                  </div>
-                  <Fragment set:html={excerpt} />
-                </div>
-                <button type="button">Lire plus</button>
-              </article>
+            posts.map(({ title, excerpt, image, date, categories, slug }: any) => (
+              <PostCard
+                title={title}
+                slug={slug}
+                excerpt={excerpt}
+                image={image}
+                date={date}
+                categories={categories}
+                client:load
+              />
             ))
           }
+          <script>
+            const cards = document.querySelectorAll(".post-container .wrapper");
+
+            function animateCard(card: any, e: any) {
+              console.log("animate");
+              const rect = card.getBoundingClientRect();
+              const rotationIntensity = 10;
+
+              const [x, y] = [e.clientX - rect.left, e.clientY - rect.top];
+              card.style.transitionDuration = "0ms";
+              card.style.transform = `rotateX(${-(y / (rect.height / 2) - 1) * rotationIntensity}deg)
+              rotateY(${(x / (rect.width / 2) - 1) * rotationIntensity}deg)`;
+            }
+
+            function restoreCardDimensions(card: any, e: any) {
+              card.style.transitionDuration = "500ms";
+              card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            }
+
+            cards.forEach((card) => {
+              let timeout: number | undefined;
+              // card.addEventListener("mousemove", (e) => {
+              //   console.log("mousemove");
+              //   console.log(e);
+              //   // clearTimeout(timeout);
+              //   // timeout = setTimeout(() => animateCard(card, e), 300);
+              // });
+              //  card.addEventListener("mouseout", restoreCardDimensions);
+            });
+          </script>
         </div>
       </section>
       <!-- Separation Wave -->
@@ -78,8 +95,10 @@ const posts = await getPosts();
   main {
     --inner-padding: 2vw;
     margin: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
     align-items: center;
 
     div.first-bloc {
@@ -87,7 +106,7 @@ const posts = await getPosts();
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: url("./backgrounds/asfalt-dark.png"), url("./backgrounds/frustration_background_home_desktop.webp");
+      background-image: url("./_assets/asfalt-dark.png"), url("./_assets/frustration_background_home_desktop.webp");
       background-repeat: repeat, no-repeat;
       background-size: auto, cover;
       background-position: top;
@@ -116,85 +135,9 @@ const posts = await getPosts();
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
+          align-items: flex-start;
           gap: 15px;
           width: 100%;
-
-          article.post-container {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            flex-basis: 32%;
-            flex-grow: 1;
-            min-width: 300px;
-            color: white;
-            background-color: var(--secondary-color);
-            cursor: pointer;
-            box-shadow: 0 0 7px 1px rgb(0 0 0 / 30%);
-
-            img {
-              width: 100%;
-              object-fit: cover;
-            }
-
-            .content {
-              padding: 1.5rem;
-
-              .header {
-                margin-bottom: 1rem;
-                display: flex;
-                flex-direction: column;
-                gap: 0.4rem;
-                h5.title {
-                  font-family: Bebas Neue;
-                  font-size: 2.2rem;
-                  line-height: 100%;
-                  color: var(--primary-color);
-                }
-
-                div.categories {
-                  display: flex;
-                  gap: 5px;
-                  span.category {
-                    color: var(--secondary-color);
-                    font-size: 0.9rem;
-                    background-color: var(--primary-color);
-                    padding: 0.25rem 0.4rem 0.1rem 0.4rem;
-                    border-radius: 0.1rem;
-                    font-family: Bebas Neue;
-                    text-transform: uppercase;
-                  }
-                }
-
-                div.date-container {
-                  span.date {
-                    font-family: Open Sans;
-                    font-weight: 400;
-                  }
-                }
-              }
-
-              p {
-                font-family: Open Sans;
-                font-weight: 400;
-                font-size: 1.1rem;
-              }
-            }
-
-            button {
-              margin-top: auto;
-              margin-bottom: 1.5rem;
-              cursor: pointer;
-              background: var(--primary-color);
-              outline: none;
-              border: none;
-              width: fit-content;
-              padding: 0.55rem 1.4rem 0.4rem 1.4rem;
-              font-size: 1.4rem;
-              text-transform: uppercase;
-              font-family: Bebas Neue;
-              font-weight: 600;
-            }
-          }
         }
       }
 

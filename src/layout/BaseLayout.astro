@@ -1,5 +1,6 @@
 ---
 import Header from "./Header.astro";
+import "@fontsource/bebas-neue";
 interface Props {
   subtitle: string;
 }
@@ -33,8 +34,11 @@ const { subtitle } = Astro.props;
 </html>
 <style>
   body {
-    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-weight: 700;
     box-sizing: border-box;
+    font-family: "Bebas Neue", cursive;
   }
 </style>
