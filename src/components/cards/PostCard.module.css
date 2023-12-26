@@ -1,7 +1,7 @@
 .postContainer {
   flex-basis: 32%;
   flex-grow: 1;
-  min-width: 300px;
+  min-width: 250px;
   height: 450px;
   color: white;
   perspective: 1200px;
@@ -62,7 +62,8 @@
 }
 
 .content {
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: 5%;
+  padding-bottom: 0;
   flex-grow: 1;
   background-color: var(--secondary-color);
 }
@@ -75,7 +76,7 @@
 
 .title {
   font-family: Bebas Neue;
-  font-size: 2.2rem;
+  font-size: clamp(25px, 5vw, 35px);
   line-height: 100%;
   color: var(--primary-color);
 }

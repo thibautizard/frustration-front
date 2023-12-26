@@ -88,17 +88,17 @@ const posts = await getPosts();
         padding: 3vh var(--inner-padding)
         h2.title
           font-family: "Bebas Neue"
-          font-size: 8rem
-          letter-spacing: -0.3rem
+          width: fit-content
+          font-size: clamp(70px, 25vw, 120px)
           margin-bottom: 20px
-          line-height: 80%
+          line-height: 85%
           position: relative
 
         h2.title::after
           content: ""
           display: block
-          width: 20%
-          height: 13px
+          width: clamp(50%, 20vw, 100%)
+          height: clamp(10px, 5vw, 13px)
           background: var(--secondary-color)
 
         .posts-container
