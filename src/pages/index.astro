@@ -1,11 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import "../styles/reset.css";
-import "../styles/global.css";
-import { Image } from "astro:assets";
 import { getPosts } from "../lib/api";
-import Header from "../layout/Header.astro";
-import { MySwiper } from "../components/Swiper";
 import PostCard from "../components/cards/PostCard";
 import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
 
@@ -20,10 +15,8 @@ const posts = await getPosts();
     <!-- Derniers articles + ... -->
     <div class="home-background pt-6 md:pt-8 lg:pt-10 xl:pt-12 2xl:pt-14">
       <!-- List of last articles -->
-      <section class="last-articles max-w-[1800px] m-auto">
-        <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[232px] mb-4 md:mb-2 lg:mb-4 xl:mb-4 2xl:mb-6 drop-shadow-lg"
-          >Derniers articles</h2
-        >
+      <section class="max-w-[1800px] m-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+        <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[232px] mb-4 md:mb-2 lg:mb-4 xl:mb-4 2xl:mb-6">Derniers articles</h2>
         <div class="posts-container">
           {
             posts.map(({ title, excerpt, image, date, categories, slug }: any) => (
@@ -61,38 +54,26 @@ const posts = await getPosts();
   </main>
 </BaseLayout>
 
-<style lang="sass">
-  .home-background
-    background-image: url("/img/stone-texture.png"), url("/img/frustration-wallpaper.webp")
-    background-repeat: repeat, no-repeat
-    background-size: auto, cover
-    background-position: top
-    background-attachment: fixed, fixed
+<style>
+  .home-background {
+    background-image: url("/img/stone-texture.png"), url("/img/frustration-wallpaper.webp");
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
+    background-position: top;
+    background-attachment: fixed, fixed;
+  }
 
-  main
-    --inner-padding: 2vw
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
 
-    // .bloc
-    //   display: none !important
-
-    .last-articles
-      padding: 3vh var(--inner-padding)
-
-      // h2.title::after
-      //   content: ""
-      //   display: block
-      //   width: clamp(50%, 20vw, 100%)
-      //   height: clamp(10px, 5vw, 13px)
-      //   background: var(--secondary-color)
-
-      .posts-container
-        display: flex
-        flex-wrap: wrap
-        justify-content: center
-        align-items: flex-start
-        gap: 15px
-        width: 100%
-
-    h2.title
-      font-family: Bebas Neue
+  h2.title {
+    font-family: Bebas Neue;
+    user-select: none;
+  }
 </style>
