@@ -13,15 +13,17 @@ const posts = await getPosts();
 ---
 
 <BaseLayout subtitle="Accueil">
-  <main>
+  <main class="overflow-scroll">
     <BannerSubscription />
-    <!-- Slider for last articles -->
+    <!-- Slider -->
 
-    <!-- First bloc -->
-    <div class="bloc first-bloc">
+    <!-- Derniers articles + ... -->
+    <div class="home-background pt-6 md:pt-8 lg:pt-10 xl:pt-12 2xl:pt-14">
       <!-- List of last articles -->
-      <section class="last-articles">
-        <h2 class="title">Derniers articles</h2>
+      <section class="last-articles max-w-[1800px] m-auto">
+        <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[232px] mb-4 md:mb-2 lg:mb-4 xl:mb-4 2xl:mb-6 drop-shadow-lg"
+          >Derniers articles</h2
+        >
         <div class="posts-container">
           {
             posts.map(({ title, excerpt, image, date, categories, slug }: any) => (
@@ -40,104 +42,57 @@ const posts = await getPosts();
       </section>
       <!-- Separation Wave -->
       <svg
-        class="wave"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
       >
         <path
-          fill="var(--secondary-color)"
-          fill-opacity="1"
+          class="fill-black"
           d="M0,160L48,160C96,160,192,160,288,176C384,192,480,224,576,240C672,256,768,256,864,224C960,192,1056,128,1152,117.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
       </svg>
     </div>
 
     <!-- Entretiens -->
-    <div class="bloc second-bloc">
+    <div class="bloc second-bloc bg-black py-7">
       <section class="interviews">
-        <h2 class="title">Entretiens</h2>
+        <h2 class="title text-white m-auto relative w-fit uppercase text-6xl sm:text-6xl md:text-9xl lg:text-[152px] xl:text-[200px]"> Entretiens</h2>
       </section>
     </div>
   </main>
 </BaseLayout>
 
 <style lang="sass">
+  .home-background
+    background-image: url("/img/stone-texture.png"), url("/img/frustration-wallpaper.webp")
+    background-repeat: repeat, no-repeat
+    background-size: auto, cover
+    background-position: top
+    background-attachment: fixed, fixed
+
   main
     --inner-padding: 2vw
-    width: 100%
-    display: flex
-    flex-direction: column
-    overflow: scroll
-    align-items: center
 
     // .bloc
     //   display: none !important
 
-    div.first-bloc
-      width: 100%
-      display: flex
-      flex-direction: column
-      align-items: center
-      background-image: url("./_assets/asfalt-dark.png"), url("./_assets/frustration_background_home_desktop.webp")
-      background-repeat: repeat, no-repeat
-      background-size: auto, cover
-      background-position: top
-      background-attachment: fixed, fixed
-      .last-articles
-        max-width: 1800px
-        padding: 3vh var(--inner-padding)
-        h2.title
-          font-family: "Bebas Neue"
-          width: fit-content
-          font-size: clamp(70px, 25vw, 120px)
-          margin-bottom: 20px
-          line-height: 85%
-          position: relative
+    .last-articles
+      padding: 3vh var(--inner-padding)
 
-        h2.title::after
-          content: ""
-          display: block
-          width: clamp(50%, 20vw, 100%)
-          height: clamp(10px, 5vw, 13px)
-          background: var(--secondary-color)
+      // h2.title::after
+      //   content: ""
+      //   display: block
+      //   width: clamp(50%, 20vw, 100%)
+      //   height: clamp(10px, 5vw, 13px)
+      //   background: var(--secondary-color)
 
-        .posts-container
-          display: flex
-          flex-wrap: wrap
-          justify-content: center
-          align-items: flex-start
-          gap: 15px
-          width: 100%
-
-      svg.wave
-        transform: translateY(10px)
-
-    div.second-bloc
-      width: 100%
-      background-color: var(--secondary-color)
-      .interviews
+      .posts-container
         display: flex
-        flex-direction: column
-        align-items: center
-        color: white
-        padding: 3vh var(--inner-padding)
+        flex-wrap: wrap
+        justify-content: center
+        align-items: flex-start
+        gap: 15px
+        width: 100%
 
-        h2.title
-          text-align: center
-          font-size: clamp(5rem, 24vw, 14rem)
-          line-height: clamp(5rem, 24vw, 14rem)
-          text-transform: uppercase
-          font-family: Bebas Neue
-          position: relative
-
-        h2.title::after
-          content: ""
-          display: block
-          width: 50%
-          height: 10px
-          background: white
-          position: absolute
-          left: 50%
-          transform: translateX(-50%)
-          bottom: 0
+    h2.title
+      font-family: Bebas Neue
 </style>

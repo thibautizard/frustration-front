@@ -7,7 +7,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   const overlayRef = React.useRef(null);
 
   const handleMouseMove = ({ clientX, clientY }) => {
-    const rotationIntensity = 10;
+    const rotationIntensity = 3;
     const overlayFactor = 2;
     const { left, top, width, height } = cardRef.current.getBoundingClientRect();
     const [x, y] = [clientX - left, clientY - top];

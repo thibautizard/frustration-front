@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { getNumberOfDaysFromNow, convertDifferenceOfDays } from "../utils/dates";
 dotenv.config();
 const API_URL = process.env.WP_URL;
 
@@ -57,7 +58,7 @@ export async function getPosts() {
     slug,
     excerpt,
     image,
-    date: new Date(date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }),
+    date: convertDifferenceOfDays(getNumberOfDaysFromNow(new Date(date))),
     categories: categories.map((category) => (category.parent ? category.parent.node.name : category.name))
   }));
 

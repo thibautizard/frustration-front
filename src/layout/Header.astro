@@ -2,14 +2,14 @@
 import { Image } from "astro:assets";
 import MagnifyingGlassIcon from "./icons/MagnifyingGlass.astro";
 import BarsIcon from "./icons/Bars.astro";
-import frustrationLogo from "./images/logo-frustration.webp";
+import frustrationLogo from "../../public/img/logo-frustration.webp";
 ---
 
 <header>
-  <nav class="nav">
+  <nav class="flex items-center bg-black text-yellow p-1.5 md:p-3 lg:p-4 xl:py-4 xl:px-5">
     <a
       href="/"
-      class="logo-frustration"
+      class="mr-auto w-32 md:w-48 lg:w-64"
     >
       <Image
         src={frustrationLogo}
@@ -17,35 +17,9 @@ import frustrationLogo from "./images/logo-frustration.webp";
         alt="Logo de Frustration"
       />
     </a>
-    <div class="icons">
+    <div class="flex gap-2 md:gap-3 lg:gap-4 xl:gap-5">
       <MagnifyingGlassIcon />
       <BarsIcon />
     </div>
   </nav>
 </header>
-
-<style>
-  .nav {
-    display: flex;
-    align-items: center;
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    padding: clamp(6px, 1vw, 10px) clamp(10px, 2vw, 30px);
-  }
-
-  .logo-frustration {
-    margin-right: auto;
-  }
-  .logo-frustration img {
-    width: clamp(120px, 20vw, 300px);
-    height: auto;
-  }
-  .icons {
-    display: flex;
-    gap: clamp(10px, 1.5vw, 30px);
-  }
-
-  .icons svg {
-    height: clamp(15px, 2vw, 25px);
-  }
-</style>
