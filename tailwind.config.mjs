@@ -11,10 +11,12 @@ export default {
     colors: {
       yellow: "#fff200",
       black: "#000",
-      white: "#fff"
+      white: "#fff",
+      purple: "#5c5db7"
     },
     fontFamily: {
-      bebas: ""
+      bebas: "Bebas Neue",
+      "open-sans": "Open Sans"
     }
   }
 };

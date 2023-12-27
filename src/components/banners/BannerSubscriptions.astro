@@ -3,12 +3,12 @@ import { Image } from "astro:assets";
 import jukeboxImage from "./assets/jukebox.png";
 ---
 
-<div id="banner">
+<div id="banner" class="bg-purple flex justify-center items-center pt-2 gap-4 md:pt-4 xl:pt-6">
   <Image
     src={jukeboxImage}
     width="300"
     alt="Un jukebox qui joue des notes de musique"
-    class="jukebox-image"
+    class="jukebox-image w-auto self-end h-20 sm:h-24 md:h-36 lg:h-48 xl:h-50"
   />
   <div class="content">
     <h3 class="objectif">OBJECTIF 1500</h3>
@@ -18,20 +18,6 @@ import jukeboxImage from "./assets/jukebox.png";
 </div>
 <style lang="scss">
   #banner {
-    width: 100%;
-    background-color: var(--purple);
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    gap: clamp(15px, 7vw, 35px);
-    padding: 0 clamp(10px, 2vw, 20px);
-    padding-top:clamp(10px, 2vw, 20px);
-
-    .jukebox-image {
-      height: clamp(80px, 15vw, 170px);
-      width: auto;
-      align-self: end;
-    }
 
     .content {
       font-family: "Bebas Neue";
