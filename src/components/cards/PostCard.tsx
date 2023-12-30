@@ -1,4 +1,5 @@
 import React from "react";
+import { isBrowser } from "react-device-detect";
 
 const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   const cardRef = React.useRef(null);
@@ -6,38 +7,42 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   const overlayRef = React.useRef(null);
 
   const handleMouseMove = ({ clientX, clientY }) => {
-    const rotationIntensity = 3;
-    const overlayFactor = 2;
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
-    const [x, y] = [clientX - left, clientY - top];
+    if (isBrowser) {
+      const rotationIntensity = 3;
+      const overlayFactor = 2;
+      const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+      const [x, y] = [clientX - left, clientY - top];
 
-    cardRef.current.style.transitionDuration = "0ms";
-    cardRef.current.style.transform = `rotateX(${-(y / (height / 2) - 1) * rotationIntensity}deg)
-    rotateY(${(x / (width / 2) - 1) * rotationIntensity}deg)`;
+      cardRef.current.style.transitionDuration = "0ms";
+      cardRef.current.style.transform = `rotateX(${-(y / (height / 2) - 1) * rotationIntensity}deg)
+      rotateY(${(x / (width / 2) - 1) * rotationIntensity}deg)`;
 
-    cardImageRef.current.style.transitionDuration = "0ms";
-    cardImageRef.current.style.transform = `scale(1.1)
-                                            translateX(${((width - x) / width - 0.5) * 25}px)
-                                            translateY(${((height - y) / height - 0.5) * 25}px)`;
+      cardImageRef.current.style.transitionDuration = "0ms";
+      cardImageRef.current.style.transform = `scale(1.1)
+                                              translateX(${((width - x) / width - 0.5) * 25}px)
+                                              translateY(${((height - y) / height - 0.5) * 25}px)`;
 
-    overlayRef.current.style.transitionDuration = "0ms";
-    overlayRef.current.style.transform = `translate3d(${-((x * (100 / overlayFactor)) / width - 50 / overlayFactor)}%,
-                                          ${-((y * (100 / overlayFactor)) / height - 50 / overlayFactor)}%,
-                                          0)`;
+      overlayRef.current.style.transitionDuration = "0ms";
+      overlayRef.current.style.transform = `translate3d(${-((x * (100 / overlayFactor)) / width - 50 / overlayFactor)}%,
+                                            ${-((y * (100 / overlayFactor)) / height - 50 / overlayFactor)}%,
+                                            0)`;
 
-    overlayRef.current.style.opacity = Math.abs(width / 2 - x) / width + Math.abs(height / 2 - y) / height;
+      overlayRef.current.style.opacity = Math.abs(width / 2 - x) / width + Math.abs(height / 2 - y) / height;
+    }
   };
 
   const handleMouseOut = () => {
-    cardRef.current.style.transitionDuration = "500ms";
-    cardRef.current.style.transform = `rotateX(0deg) rotateY(0deg)`;
-    cardImageRef.current.style.transitionDuration = "500ms";
-    cardImageRef.current.style.transform = `scale(1)
-                                            translateX(0px)
-                                            translateY(0px)`;
-    overlayRef.current.style.transitionDuration = "500ms";
-    overlayRef.current.style.opacity = "0";
-    overlayRef.current.style.transform = `translate3d(0%, 0%, 0);`;
+    if (isBrowser) {
+      cardRef.current.style.transitionDuration = "500ms";
+      cardRef.current.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      cardImageRef.current.style.transitionDuration = "500ms";
+      cardImageRef.current.style.transform = `scale(1)
+                                              translateX(0px)
+                                              translateY(0px)`;
+      overlayRef.current.style.transitionDuration = "500ms";
+      overlayRef.current.style.opacity = "0";
+      overlayRef.current.style.transform = `translate3d(0%, 0%, 0);`;
+    }
   };
   return (
     <article
