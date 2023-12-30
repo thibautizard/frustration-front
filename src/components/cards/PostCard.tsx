@@ -58,6 +58,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
             className="w-full object-cover"
             title={image.title}
             srcSet={image.srcSet}
+            sizes="200px"
             alt={image.altText}
             width="500"
             height="300"
