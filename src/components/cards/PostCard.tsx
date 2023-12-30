@@ -91,10 +91,12 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
           ></div>
         </div>
         {/* Overlay */}
-        <div
-          ref={overlayRef}
-          className={`absolute w-[200%] h-[200%] rounded-3xl left-[-50%] top-[-50%] opacity-0 bg-[radial-gradient(circle_at_50%,hsla(0,0%,100%,0.25),transparent_50%)]`}
-        ></div>
+        <div className="overflow-hidden absolute h-full w-full">
+          <div
+            ref={overlayRef}
+            className={`absolute w-[200%] h-[200%] rounded-3xl left-[-50%] top-[-50%] opacity-0 bg-[radial-gradient(circle_at_50%,hsla(0,0%,100%,0.25),transparent_50%)]`}
+          ></div>
+        </div>
       </div>
     </article>
   );
