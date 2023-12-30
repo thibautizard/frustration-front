@@ -9,15 +9,15 @@ const posts = await getPosts();
 
 <BaseLayout subtitle="Accueil">
   <main class="overflow-scroll">
-    <BannerSubscription />
+    <!-- <BannerSubscription /> -->
     <!-- Slider -->
 
     <!-- Derniers articles + ... -->
-    <div class="home-background pt-6 md:pt-8 lg:pt-10 xl:pt-12 2xl:pt-14">
+    <div class="home-background h-fit pt-6 md:pt-8 lg:pt-10 xl:pt-12 2xl:pt-14">
       <!-- List of last articles -->
-      <section class="max-w-[1800px] m-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+      <section class="max-w-[1800px] m-auto h-fit px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[232px] mb-4 md:mb-2 lg:mb-4 xl:mb-4">Derniers articles</h2>
-        <div class="flex flex-wrap justify-center items-start w-full gap-2 md:gap-3 xl:gap-4">
+        <div class="flex flex-wrap justify-center items-start w-full gap-2 md:gap-3 xl:gap-4 overflow-hidden">
           {
             posts.map(({ title, excerpt, image, date, categories, slug }: any) => (
               <PostCard
@@ -37,6 +37,7 @@ const posts = await getPosts();
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
+        class="translate-y-1"
       >
         <path
           class="fill-black"
@@ -57,10 +58,8 @@ const posts = await getPosts();
 <style>
   .home-background {
     background-image: url("/img/stone-texture.png"), url("/img/frustration-wallpaper.webp");
-    background-repeat: repeat, no-repeat;
+    background-repeat: repeat, repeat;
     background-size: auto, cover;
-    background-position: top;
-    background-attachment: fixed, fixed;
   }
 
   h2.title {

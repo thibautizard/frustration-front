@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./PostCard.module.css";
 
 const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   const cardRef = React.useRef(null);
@@ -42,7 +41,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   };
   return (
     <article
-      className={`${styles.postContainer} group/container basis-[32%] grow min-w-[250px] h-[450px]`}
+      className={`group/container basis-[32%] grow min-w-[250px] h-[450px]`}
       style={{ perspective: "1200px" }}
     >
       {/* Wrapper */}
@@ -87,14 +86,14 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
           </div>
           {/* Excerpt */}
           <div
-            className={`${styles.moreDetails} grid grid-rows-[0fr] group-hover/container:grid-rows-[1fr] text-white font-open-sans overflow-hidden transition-[ grid-template-rows] duration-500  group-hover/container:*:mb-5 *:overflow-hidden`}
+            className={`grid grid-rows-[0fr] group-hover/container:grid-rows-[1fr] text-white font-open-sans overflow-hidden transition-[ grid-template-rows] duration-500  group-hover/container:*:mb-5 *:overflow-hidden`}
             dangerouslySetInnerHTML={{ __html: excerpt }}
           ></div>
         </div>
         {/* Overlay */}
         <div
           ref={overlayRef}
-          className={`${styles.overlay} absolute w-[200%] h-[200%] rounded-3xl left-[-50%] top-[-50%] opacity-0 bg-[radial-gradient(circle_at_50%,hsla(0,0%,100%,0.25),transparent_50%)]`}
+          className={`absolute w-[200%] h-[200%] rounded-3xl left-[-50%] top-[-50%] opacity-0 bg-[radial-gradient(circle_at_50%,hsla(0,0%,100%,0.25),transparent_50%)]`}
         ></div>
       </div>
     </article>
