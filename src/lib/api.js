@@ -32,9 +32,9 @@ export async function getPosts() {
             excerpt(format: RENDERED)
             featuredImage {
               node {
-                sourceUrl(size: ET_PB_IMAGE__RESPONSIVE__DESKTOP)
                 title(format: RENDERED)
                 altText
+                srcSet
               }
             }
             date
