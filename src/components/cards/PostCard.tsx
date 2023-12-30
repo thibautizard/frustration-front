@@ -41,7 +41,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
   };
   return (
     <article
-      className={`group/container basis-[32%] grow min-w-[250px] h-[450px]`}
+      className={`group/container basis-[32%] grow min-w-[250px] h-[375px] lg:h-[450px]`}
       style={{ perspective: "1200px" }}
     >
       {/* Wrapper */}
@@ -68,7 +68,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
           {/* Header */}
           <div className="flex flex-col mb-[1rem] gap-[0.4rem]">
             {/* Title */}
-            <h5 className="text-yellow font-bebas text-2xl md:text-3xl xl:text-4xl">{title}</h5>
+            <h5 className="text-yellow leading-none font-bebas text-3xl md:text-3xl xl:text-4xl">{title}</h5>
             {/* Categories */}
             <div className="flex gap-1">
               {/* Category */}
@@ -82,7 +82,7 @@ const PostCard = ({ title, excerpt, image, date, categories, slug }) => {
               ))}
             </div>
             {/* Date */}
-            <span className="text-white font-open-sans">{date}</span>
+            <span className="text-white text-sm font-open-sans">{date}</span>
           </div>
           {/* Excerpt */}
           <div
