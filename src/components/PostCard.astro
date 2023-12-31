@@ -1,5 +1,5 @@
 ---
-const { title, excerpt, image, date, categories, slug } = Astro.props;
+const { title, author, excerpt, image, date, categories, slug } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
@@ -37,8 +37,16 @@ import { Image } from "astro:assets";
           {/* Category */}
           {categories.map((category: string) => <span class="text-black bg-yellow text-base font-bebas uppercase rounded px-2">{category}</span>)}
         </div>
-        {/* Date */}
-        <span class="text-white text-sm font-open-sans">{date}</span>
+        {/* Date and author */}
+        <div class="text-white text-sm font-open-sans">
+          <span class="date">{date}</span>
+           •
+          <span
+            class="author"
+            style={{ fontVariant: "small-caps" }}
+            >{author}</span
+          >
+        </div>
       </div>
       {/* Excerpt */}
       <div

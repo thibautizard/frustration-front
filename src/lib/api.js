@@ -48,13 +48,20 @@ export async function getPosts() {
                 }
               }
             }
+            author {
+              node {
+                lastName
+                firstName
+              }
+            }
           }
         }
     }
   `);
 
-  posts = posts.nodes.map(({ title, slug, excerpt, featuredImage: { node: image }, date, categories: { nodes: categories }, sourceUrl }) => ({
+  posts = posts.nodes.map(({ title, slug, excerpt, featuredImage: { node: image }, date, categories: { nodes: categories }, author: { node: author } }) => ({
     title,
+    author: `${author.firstName ?? ""} ${author.lastName ?? ""}`,
     slug,
     excerpt,
     image,
