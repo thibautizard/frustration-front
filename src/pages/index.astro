@@ -5,7 +5,7 @@ import { getPosts, getInterviews } from "../lib/api";
 import { getImage } from "astro:assets";
 import PostCardAstro from "../components/PostCard.astro";
 import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
-import frustrationBackground from "./textures/frustration-wallpaper.webp";
+import frustrationBackground from "./textures/frustration_wallpaper.webp";
 const optimizedBackground = await getImage({ src: frustrationBackground, format: "webp", width: 1400 });
 const backgroundUrl = `url(${optimizedBackground.src})`;
 const posts = await getPosts();
