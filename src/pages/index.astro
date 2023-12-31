@@ -3,12 +3,11 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import SwiperInterviews from "../components/swipers/SwiperInterviews.astro";
 import { getPosts, getInterviews } from "../lib/api";
 import { getImage } from "astro:assets";
-import PostCard from "../components/PostCard";
 import PostCardAstro from "../components/PostCard.astro";
 import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
 import frustrationBackground from "./textures/frustration-wallpaper.webp";
 const optimizedBackground = await getImage({ src: frustrationBackground, format: "webp", width: 1400 });
-const backgroundUrl = optimizedBackground.src;
+const backgroundUrl = `url(${optimizedBackground.src})`;
 const posts = await getPosts();
 const interviews = await getInterviews();
 ---
@@ -57,16 +56,13 @@ const interviews = await getInterviews();
     <div class="bg-black py-7">
       <section class="interviews">
         <h2 class="title text-white m-auto relative w-fit uppercase text-7xl sm:text-6xl md:text-9xl lg:text-[152px] xl:text-[200px]"> Entretiens</h2>
-        <SwiperInterviews
-          interviews={interviews}
-          client:load
-        />
+        <SwiperInterviews interviews={interviews} />
       </section>
     </div>
   </main>
 </BaseLayout>
 
-<style define:vars={{ backgroundUrl: `url(${backgroundUrl})` }}>
+<style define:vars={{ backgroundUrl }}>
   .home-background {
     background-color: #fff200;
     background-image: url("/img/stone-texture.png"), var(--backgroundUrl);

@@ -3,7 +3,10 @@ import { Image } from "astro:assets";
 import jukeboxImage from "./assets/jukebox.png";
 ---
 
-<div id="banner" class="bg-purple flex justify-center items-center pt-2 gap-4 md:pt-4 xl:pt-6">
+<div
+  id="banner"
+  class="bg-purple flex justify-center items-center pt-2 gap-4 md:pt-4 xl:pt-6"
+>
   <Image
     src={jukeboxImage}
     width="300"
@@ -16,27 +19,25 @@ import jukeboxImage from "./assets/jukebox.png";
     <div class="progress-bar"></div>
   </div>
 </div>
-<style lang="scss">
+<style>
+  .content {
+    font-family: "Bebas Neue";
+    color: #fff;
+    text-align: center;
+    align-self: center;
+  }
+  .objectif {
+    font-size: clamp(1.3rem, 4.5vw, 3.5rem);
+  }
 
-    .content {
-      font-family: "Bebas Neue";
-      color: #fff;
-      text-align: center;
-      align-self: center;
+  .vous-aimez-frustration {
+    font-size: clamp(0.7rem, 2.5vw, 2rem);
+  }
 
-      .objectif {
-        font-size: clamp(1.3rem, 4.5vw ,3.5rem)
-      }
-
-      .vous-aimez-frustration {
-        font-size:  clamp(.7rem, 2.5vw ,2rem)
-      }
-
-      .progress-bar {
-        width: 60%;
-        height: clamp(10px, 2vw,30px);
-        margin-top: clamp(5px, 1.5vw, 10px);
-        background: #fff;
-      }
-    }
+  .progress-bar {
+    width: 60%;
+    height: clamp(10px, 2vw, 30px);
+    margin-top: clamp(5px, 1.5vw, 10px);
+    background: #fff;
+  }
 </style>
