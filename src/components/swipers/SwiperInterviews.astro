@@ -1,0 +1,81 @@
+---
+const { interviews } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<!-- Slider main container -->
+<div class="swiper text-white">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {
+      interviews.map(({ title, image }) => (
+        <div class="swiper-slide">
+          <h5>{title}</h5>
+          <Image
+            title={image.title}
+            src={image.sourceUrl}
+            alt={image.altText}
+            width="600"
+            height="300"
+            class="blurred-edges saturate-0 contrast-125"
+          />
+        </div>
+      ))
+    }
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+<style>
+  .swiper-slide {
+    height: 300px;
+  }
+
+  .blurred-edges {
+    mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 50%);
+  }
+</style>
+<script>
+  import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+  const swiper = new Swiper(".swiper", {
+    autoHeight: true,
+    speed: 400,
+    spaceBetween: 100,
+    direction: "vertical",
+    //   autoplay: {
+    //    delay: 5000,
+    //  },
+    // Optional parameters
+    direction: "vertical",
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination"
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: ".swiper-scrollbar"
+    }
+  });
+</script>

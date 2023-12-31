@@ -1,15 +1,21 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import { getPosts } from "../lib/api";
-import PostCard from "../components/cards/PostCard";
+import SwiperInterviews from "../components/swipers/SwiperInterviews.astro";
+import { getPosts, getInterviews } from "../lib/api";
+import { getImage } from "astro:assets";
+import PostCard from "../components/PostCard";
+import PostCardAstro from "../components/PostCard.astro";
 import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
-
+import frustrationBackground from "./textures/frustration-wallpaper.webp";
+const optimizedBackground = await getImage({ src: frustrationBackground, format: "webp", width: 1400 });
+const backgroundUrl = optimizedBackground.src;
 const posts = await getPosts();
+const interviews = await getInterviews();
 ---
 
 <BaseLayout subtitle="Accueil">
   <main class="overflow-scroll">
-    <!-- <BannerSubscription /> -->
+    <BannerSubscription />
     <!-- Slider -->
 
     <!-- Derniers articles + ... -->
@@ -20,15 +26,16 @@ const posts = await getPosts();
         <div class="flex flex-wrap justify-center items-start w-full gap-2 md:gap-3 xl:gap-4">
           {
             posts.map(({ title, excerpt, image, date, categories, slug }: any) => (
-              <PostCard
-                title={title}
-                slug={slug}
-                excerpt={excerpt}
-                image={image}
-                date={date}
-                categories={categories}
-                client:load
-              />
+              <>
+                <PostCardAstro
+                  title={title}
+                  slug={slug}
+                  excerpt={excerpt}
+                  image={image}
+                  date={date}
+                  categories={categories}
+                />
+              </>
             ))
           }
         </div>
@@ -47,17 +54,22 @@ const posts = await getPosts();
     </div>
 
     <!-- Entretiens -->
-    <div class="bloc second-bloc bg-black py-7">
+    <div class="bg-black py-7">
       <section class="interviews">
         <h2 class="title text-white m-auto relative w-fit uppercase text-7xl sm:text-6xl md:text-9xl lg:text-[152px] xl:text-[200px]"> Entretiens</h2>
+        <SwiperInterviews
+          interviews={interviews}
+          client:load
+        />
       </section>
     </div>
   </main>
 </BaseLayout>
 
-<style>
+<style define:vars={{ backgroundUrl: `url(${backgroundUrl})` }}>
   .home-background {
-    background-image: url("/img/stone-texture.png"), url("/img/frustration-wallpaper.webp");
+    background-color: #fff200;
+    background-image: url("/img/stone-texture.png"), var(--backgroundUrl);
     background-repeat: repeat, repeat;
     background-size: auto, cover;
   }

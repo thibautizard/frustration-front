@@ -34,7 +34,7 @@ export async function getPosts() {
               node {
                 title(format: RENDERED)
                 altText
-                srcSet
+                sourceUrl
               }
             }
             date
@@ -53,7 +53,7 @@ export async function getPosts() {
     }
   `);
 
-  posts = posts.nodes.map(({ title, slug, excerpt, featuredImage: { node: image }, date, categories: { nodes: categories } }) => ({
+  posts = posts.nodes.map(({ title, slug, excerpt, featuredImage: { node: image }, date, categories: { nodes: categories }, sourceUrl }) => ({
     title,
     slug,
     excerpt,
@@ -63,4 +63,34 @@ export async function getPosts() {
   }));
 
   return posts;
+}
+
+export async function getInterviews() {
+  const {
+    data: { posts }
+  } = await fetchAPI(`
+   query getInterviews {
+        posts(where: {categoryName: "Entretiens"}, first: 6) {
+          nodes {
+            title(format: RENDERED)
+            slug
+            featuredImage {
+              node {
+                title
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+    }
+  `);
+
+  const interviews = posts.nodes.map(({ title, slug, featuredImage: { node: image } }) => ({
+    title,
+    slug,
+    image
+  }));
+
+  return interviews;
 }
