@@ -3,42 +3,12 @@ const { interviews } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-<!-- Slider main container -->
-<div class="swiper text-white">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    {
-      interviews.map(({ title, image }) => (
-        <div class="swiper-slide">
-          <h5>{title}</h5>
-          <Image
-            title={image.title}
-            src={image.sourceUrl}
-            alt={image.altText}
-            width="600"
-            height="300"
-            class="blurred-edges saturate-0 contrast-125"
-          />
-        </div>
-      ))
-    }
-  </div>
-  <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
-
-  <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
-</div>
 <style>
+  .swiper {
+    width: 600px;
+    height: 500px;
+    border: 2px solid white;
+  }
   .swiper-slide {
     height: 300px;
   }
@@ -46,11 +16,34 @@ import { Image } from "astro:assets";
   .blurred-edges {
     mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 50%);
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-right-color: white;
+    color: white;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: white;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: white;
+  }
 </style>
 <script>
-  import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from "swiper/modules";
+
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
 
   const swiper = new Swiper(".swiper", {
+    modules: [Navigation, Pagination],
     autoHeight: true,
     speed: 400,
     spaceBetween: 100,
@@ -78,3 +71,37 @@ import { Image } from "astro:assets";
     }
   });
 </script>
+
+<!-- Slider main container -->
+<div class="swiper text-white">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {
+      interviews.map(({ title, image }) => (
+        <div class="swiper-slide flex flex-col justify-center items-center">
+          <div class="img-wrapper h-[400px] grid place-items-center">
+            <Image
+              title={image.title}
+              src={image.sourceUrl}
+              alt={image.altText}
+              width="600"
+              height="350"
+              class="blurred-edges saturate-0 contrast-125"
+            />
+          </div>
+          <h5 class="text-center font-open-sans px-2 text-balance">{title}</h5>
+        </div>
+      ))
+    }
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
