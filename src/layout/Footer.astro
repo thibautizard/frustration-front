@@ -1,0 +1,87 @@
+---
+import X from "./icons/X.astro";
+import TikTok from "./icons/TikTok.astro";
+import Facebook from "./icons/Facebook.astro";
+import Youtube from "./icons/Youtube.astro";
+import Instagram from "./icons/Instagram.astro";
+import RSS from "./icons/RSS.astro";
+---
+
+<footer class="bg-yellow">
+  <div class="informations max-w-[1700px] flex flex-wrap justify-between m-auto py-20 px-6">
+    <!-- Titles -->
+    <div class="titles w-full mb-10">
+      <h2 class="uppercase font-bebas font-bold text-7xl leading-[80%]">Frustration Magazine</h2>
+      <h4 class="uppercase font-bebas font-bold text-3xl">Le média de la lutte des classes</h4>
+      <p class="font-open-sans text-base">© Frustration – {new Date().getFullYear()}</p>
+    </div>
+
+    <!-- Module newsletter -->
+    <div class="module-newsletter flex flex-col basis-[47%]">
+      <h5 class="uppercase font-bebas text-3xl leading-[80%]">Nous suivre (jusqu'à la révolution)</h5>
+      <p class="font-open-sans text-base mb-6">Recevez régulièrement une sélection de nos meilleurs articles récemment parus !</p>
+      <form class="flex flex-col gap-3">
+        <input
+          class="px-5 py-2 text-sm placeholder-red-300"
+          name="name"
+          placeholder="Nom"
+          type="text"
+        />
+        <input
+          class="px-5 py-2 text-sm text-red-100"
+          name="email"
+          placeholder="Email"
+          type="email"
+        />
+        <button
+          type="submit"
+          class="bg-black text-yellow font-open-sans font-bold text-base py-2"
+          >S'inscrire à la newsletter</button
+        >
+      </form>
+    </div>
+
+    <!-- Module social networks and credits -->
+    <div class="module-social-networks-credits basis-[47%] flex flex-col justify-between">
+      <div class="social-networks">
+        <h5 class="uppercase font-bebas text-3xl leading-[80%] mb-3">Nos réseaux sociaux</h5>
+        <ul class="social-networks-links flex gap-3 items-center">
+          <a href="/">
+            <X />
+          </a>
+          <a href="/">
+            <Facebook />
+          </a>
+          <a href="/">
+            <Youtube />
+          </a>
+          <a href="/">
+            <TikTok />
+          </a>
+          <a href="/">
+            <Instagram />
+          </a>
+          <a href="/">
+            <RSS />
+          </a>
+          <!-- ajouter tiktok -->
+        </ul>
+      </div>
+      <div class="credits flex flex-col gap-1">
+        <p class="font-open-sans leading-none">
+          <span class="font-bold">Illustrations :</span>
+          <span class="font-light">Antoine Glorieux</span>
+        </p>
+        <p class="font-open-sans leading-none">
+          <span class="font-bold">Développement web :</span>
+          <span class="font-light">Thibaut Izard</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Useful links -->
+  <ul class="font-bebas bg-black text-yellow flex justify-center items-center gap-4 py-1 lg:py-2 text-sm lg:text-lg">
+    <li>Mentions légales</li>
+    <li>Politique de confidentialité</li>
+  </ul>
+</footer>

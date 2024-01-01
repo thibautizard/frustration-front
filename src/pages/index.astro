@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import Footer from "../layout/Footer.astro";
 import SwiperInterviews from "../components/swipers/SwiperInterviews.astro";
 import { getPosts, getInterviews } from "../lib/api";
 import { getImage } from "astro:assets";
@@ -60,6 +61,9 @@ const interviews = await getInterviews();
         <SwiperInterviews interviews={interviews} />
       </section>
     </div>
+
+    <!-- Footer -->
+    <Footer />
   </main>
 </BaseLayout>
 
