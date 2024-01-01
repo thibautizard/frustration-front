@@ -4,34 +4,8 @@ import { Image } from "astro:assets";
 ---
 
 <style>
-  .swiper {
-    width: 600px;
-    height: 500px;
-    border: 2px solid white;
-  }
-  .swiper-slide {
-    height: 300px;
-  }
-
   .blurred-edges {
     mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 50%);
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    border-top-color: white;
-    border-bottom-color: white;
-    border-left-color: white;
-    border-right-color: white;
-    color: white;
-  }
-
-  .swiper-pagination-bullet {
-    background-color: white;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: white;
   }
 </style>
 <script>
@@ -45,7 +19,7 @@ import { Image } from "astro:assets";
   const swiper = new Swiper(".swiper", {
     modules: [Navigation, Pagination],
     autoHeight: true,
-    speed: 400,
+    speed: 700,
     spaceBetween: 100,
     direction: "horizontal",
     //   autoplay: {
@@ -73,24 +47,32 @@ import { Image } from "astro:assets";
 </script>
 
 <!-- Slider main container -->
-<div class="swiper text-white">
+<div
+  class="swiper text-white w-[600px] max-w-full h-[500px]"
+  style={{
+    "--swiper-navigation-color": "#FFF",
+    "--swiper-pagination-color": "#FFF",
+    "--swiper-pagination-bullet-inactive-color": "#FFF",
+    "--swiper-pagination-bullet-inactive-opacity": ".5",
+    "--swiper-pagination-bullet-size": "10px",
+    "--swiper-pagination-bullet-horizontal-gap": "6px"
+  }}
+>
   <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper mb-12">
     <!-- Slides -->
     {
       interviews.map(({ title, image }) => (
-        <div class="swiper-slide flex flex-col justify-center items-center">
-          <div class="img-wrapper h-[400px] grid place-items-center">
-            <Image
-              title={image.title}
-              src={image.sourceUrl}
-              alt={image.altText}
-              width="600"
-              height="350"
-              class="blurred-edges saturate-0 contrast-125"
-            />
-          </div>
-          <h5 class="text-center font-open-sans px-2 text-balance">{title}</h5>
+        <div class="swiper-slide !flex flex-col justify-center items-center">
+          <Image
+            title={image.title}
+            src={image.sourceUrl}
+            alt={image.altText}
+            width="600"
+            height="300"
+            class="blurred-edges saturate-0 contrast-125 h-[300px] w-auto mb-2"
+          />
+          <h5 class="text-center text-xl h-[3lh] max-w-[40ch] font-open-sans px-2 text-balance">{title}</h5>
         </div>
       ))
     }
