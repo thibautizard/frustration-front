@@ -8,44 +8,6 @@ import { Image } from "astro:assets";
     mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 50%);
   }
 </style>
-<script>
-  import Swiper from "swiper";
-  import { Navigation, Pagination } from "swiper/modules";
-
-  import "swiper/css";
-  import "swiper/css/navigation";
-  import "swiper/css/pagination";
-
-  const swiper = new Swiper(".swiper", {
-    modules: [Navigation, Pagination],
-    autoHeight: true,
-    speed: 700,
-    spaceBetween: 100,
-    direction: "horizontal",
-    //   autoplay: {
-    //    delay: 5000,
-    //  },
-    // Optional parameters
-    loop: true,
-
-    // If we need pagination
-    pagination: {
-      el: ".swiper-pagination"
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: ".swiper-scrollbar"
-    }
-  });
-</script>
-
 <!-- Slider main container -->
 <div
   class="swiper text-white w-[600px] max-w-full h-[500px]"
@@ -53,9 +15,10 @@ import { Image } from "astro:assets";
     "--swiper-navigation-color": "#FFF",
     "--swiper-pagination-color": "#FFF",
     "--swiper-pagination-bullet-inactive-color": "#FFF",
-    "--swiper-pagination-bullet-inactive-opacity": ".5",
+    "--swiper-pagination-bullet-inactive-opacity": ".3",
     "--swiper-pagination-bullet-size": "10px",
-    "--swiper-pagination-bullet-horizontal-gap": "6px"
+    "--swiper-pagination-bullet-horizontal-gap": "6px",
+    "--swiper-navigation-size": "30px"
   }}
 >
   <!-- Additional required wrapper -->
@@ -87,3 +50,30 @@ import { Image } from "astro:assets";
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
 </div>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  const swiper = new Swiper(".swiper", {
+    modules: [Autoplay, Navigation, Pagination],
+    autoHeight: true,
+    speed: 700,
+    spaceBetween: 100,
+    direction: "horizontal",
+    autoplay: {
+      delay: 3000
+    },
+    pagination: {
+      el: ".swiper-pagination"
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
