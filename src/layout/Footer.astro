@@ -8,16 +8,16 @@ import RSS from "./icons/RSS.astro";
 ---
 
 <footer class="bg-yellow">
-  <div class="informations max-w-[1700px] flex flex-wrap justify-between m-auto py-20 px-6">
+  <div class="informations max-w-[1700px] flex flex-wrap justify-between m-auto py-12 lg:py-20 px-6">
     <!-- Titles -->
-    <div class="titles w-full mb-10">
-      <h2 class="uppercase font-bebas font-bold text-7xl leading-[80%]">Frustration Magazine</h2>
-      <h4 class="uppercase font-bebas font-bold text-3xl">Le média de la lutte des classes</h4>
+    <div class="titles w-full">
+      <h2 class="uppercase font-bebas font-bold text-7xl leading-[80%] tracking-tighter">Frustration Magazine</h2>
+      <h4 class="uppercase font-bebas font-bold text-3xl leading-none">Le média de la lutte des classes</h4>
       <p class="font-open-sans text-base">© Frustration – {new Date().getFullYear()}</p>
     </div>
 
     <!-- Module newsletter -->
-    <div class="module-newsletter flex flex-col basis-[47%]">
+    <div class="module-newsletter flex flex-col basis-[47%] flex-grow mt-10">
       <h5 class="uppercase font-bebas text-3xl leading-[80%]">Nous suivre (jusqu'à la révolution)</h5>
       <p class="font-open-sans text-base mb-6">Recevez régulièrement une sélection de nos meilleurs articles récemment parus !</p>
       <form class="flex flex-col gap-3">
@@ -42,7 +42,7 @@ import RSS from "./icons/RSS.astro";
     </div>
 
     <!-- Module social networks and credits -->
-    <div class="module-social-networks-credits basis-[47%] flex flex-col justify-between">
+    <div class="module-social-networks-credits basis-[47%] flex flex-col flex-grow justify-between mt-10 min-h-[150px]">
       <div class="social-networks">
         <h5 class="uppercase font-bebas text-3xl leading-[80%] mb-3">Nos réseaux sociaux</h5>
         <ul class="social-networks-links flex gap-3 items-center">
