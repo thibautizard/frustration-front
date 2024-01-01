@@ -55,13 +55,24 @@ const interviews = await getInterviews();
     </div>
 
     <!-- Entretiens -->
-    <div class="bg-black py-7">
+    <div class="bg-black py-7 relative">
       <section class="interviews px-2">
         <h2 class="title text-white m-auto relative w-fit uppercase text-7xl sm:text-6xl md:text-9xl lg:text-[152px] xl:text-[200px] mb-2 lg:mb-8"> Entretiens</h2>
         <SwiperInterviews interviews={interviews} />
       </section>
+      <!-- Line of triangles -->
+      <div class="box"> </div>
+      <style>
+        .box {
+          height: 50px;
+          position: absolute;
+          width: 100vw;
+          translate: 0 24px;
+          background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 490 490" x="0px" y="0px" fill="black"><polygon points="245,456.701 490,33.299 0,33.299 "></polygon></svg>')
+            center/auto 100%;
+        }
+      </style>
     </div>
-
     <!-- Footer -->
     <Footer />
   </main>
