@@ -5,6 +5,11 @@ import Facebook from "./icons/Facebook.astro";
 import Youtube from "./icons/Youtube.astro";
 import Instagram from "./icons/Instagram.astro";
 import RSS from "./icons/RSS.astro";
+import { getImage } from "astro:assets";
+
+import frustrationFooterTexture from "./textures/frustration_footer_texture.png";
+const optimizedBackground = await getImage({ src: frustrationFooterTexture, format: "webp" });
+const backgroundUrl = `url(${optimizedBackground.src})`;
 ---
 
 <footer class="bg-yellow pt-10">
@@ -46,22 +51,40 @@ import RSS from "./icons/RSS.astro";
       <div class="social-networks">
         <h5 class="uppercase font-bebas text-3xl leading-[80%] mb-3">Nos réseaux sociaux</h5>
         <ul class="social-networks-links flex gap-3 items-center">
-          <a href="/">
+          <a
+            href="https://twitter.com/Frustration_web"
+            target="_blank"
+          >
             <X />
           </a>
-          <a href="/">
+          <a
+            href="https://www.facebook.com/FrustrationMag"
+            target="_blank"
+          >
             <Facebook />
           </a>
-          <a href="/">
+          <a
+            href="https://www.youtube.com/channel/UCHCwlzgXqqjrNxfVOmLsU5w"
+            target="_blank"
+          >
             <Youtube />
           </a>
-          <a href="/">
+          <a
+            href="https://www.tiktok.com/@frustrationmag"
+            target="_blank"
+          >
             <TikTok />
           </a>
-          <a href="/">
+          <a
+            href="https://www.instagram.com/frustrationmag/"
+            target="_blank"
+          >
             <Instagram />
           </a>
-          <a href="/">
+          <a
+            href="https://www.frustrationmagazine.fr/feed"
+            target="_blank"
+          >
             <RSS />
           </a>
           <!-- ajouter tiktok -->
@@ -69,11 +92,11 @@ import RSS from "./icons/RSS.astro";
       </div>
       <div class="credits flex flex-col gap-1">
         <p class="font-open-sans leading-none">
-          <span class="font-bold">Illustrations :</span>
+          <span class="font-bold">Design :</span>
           <span class="font-light">Antoine Glorieux</span>
         </p>
         <p class="font-open-sans leading-none">
-          <span class="font-bold">Développement web :</span>
+          <span class="font-bold">Développement :</span>
           <span class="font-light">Thibaut Izard</span>
         </p>
       </div>
@@ -89,3 +112,11 @@ import RSS from "./icons/RSS.astro";
     </a>
   </ul>
 </footer>
+<style define:vars={{ backgroundUrl }}>
+  footer {
+    background-color: #fff200;
+    background-image: var(--backgroundUrl);
+    background-repeat: repeat;
+    background-size: contain;
+  }
+</style>
