@@ -104,10 +104,34 @@ const backgroundUrl = `url(${optimizedBackground.src})`;
   </div>
   <!-- Useful links -->
   <ul class="font-bebas bg-black text-yellow flex justify-center items-center gap-4 py-1 lg:py-2 text-sm lg:text-lg">
-    <a href="">
+    <style>
+      .useful-link::before {
+        content: "";
+        width: 0%;
+        height: 2px;
+        background-color: #fff200;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        transition: width 200ms linear;
+        left: 50%;
+        translate: -50% 0;
+      }
+
+      .useful-link:hover::before {
+        width: 100%;
+      }
+    </style>
+    <a
+      href="/mentions-legales"
+      class="useful-link relative"
+    >
       <li>Mentions légales</li>
     </a>
-    <a href="">
+    <a
+      href="/politique-de-confidentialite"
+      class="useful-link relative"
+    >
       <li>Politique de confidentialité</li>
     </a>
   </ul>

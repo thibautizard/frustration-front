@@ -38,14 +38,14 @@ import { Image } from "astro:assets";
           {categories.map((category: string) => <span class="text-black bg-yellow text-base font-bebas uppercase rounded px-2">{category}</span>)}
         </div>
         {/* Date and author */}
-        <div class="text-white text-sm font-open-sans">
+        <div class="text-white font-open-sans">
           <span
-            class="author"
+            class="author text-base"
             style={{ fontVariant: "small-caps" }}
             >{author}</span
           >
-           •
-          <span class="date">{date}</span>
+           |
+          <span class="date text-xs">{date}</span>
         </div>
       </div>
       {/* Excerpt */}
