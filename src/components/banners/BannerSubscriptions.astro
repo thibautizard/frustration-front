@@ -1,43 +1,99 @@
 ---
 import { Image } from "astro:assets";
 import jukeboxImage from "./assets/jukebox.png";
+import note1 from "./assets/notes/note1.png";
+import note2 from "./assets/notes/note2.png";
+import note3 from "./assets/notes/note3.png";
+import note4 from "./assets/notes/note4.png";
+import note5 from "./assets/notes/note5.png";
 ---
 
 <div
   id="banner"
-  class="bg-purple flex justify-center items-center pt-2 gap-4 md:pt-4 xl:pt-6"
+  class="bg-purple flex justify-center items-center pt-2 md:pt-4 gap-6 px-4"
 >
-  <Image
-    src={jukeboxImage}
-    width="300"
-    alt="Un jukebox qui joue des notes de musique"
-    class="jukebox-image w-auto self-end h-20 sm:h-24 md:h-36 lg:h-48 xl:h-50"
-  />
-  <div class="content">
-    <h3 class="objectif">OBJECTIF 1500</h3>
-    <h5 class="vous-aimez-frustration">Vous aimez Frustration ? Aidez-nous à GRANDIR !</h5>
-    <div class="progress-bar"></div>
+  <div class="jukebox-wrapper w-auto self-end h-20 sm:h-24 md:h-36 md:h-42 relative">
+    <Image
+      src={jukeboxImage}
+      width="300"
+      alt="Un jukebox qui joue des notes de musique"
+      class="jukebox-image h-full w-auto"
+    />
+    <Image
+      src={note1}
+      width="10"
+      alt="note de musique"
+      class="absolute top-[0px] left-[0px] w-[7px] md:w-[10px]"
+    />
+    <Image
+      src={note2}
+      width="10"
+      alt="note de musique"
+      class="absolute top-[10px] left-[-10px] md:top-[15px] md:left-[-15px] w-[7px] md:w-[10px]"
+    />
+    <Image
+      src={note3}
+      width="10"
+      alt="note de musique"
+      class="absolute top-[-8px] left-[12px] md:top-[-8px] md:left-[18px] w-[7px] md:w-[10px]"
+    />
+    <Image
+      src={note4}
+      width="10"
+      alt="note de musique"
+      class="absolute top-[-8px] right-[6px] md:top-[-8px] md:right-[18px] w-[7px] md:w-[10px]"
+    />
+
+    <Image
+      src={note5}
+      width="10"
+      alt="note de musique"
+      class="absolute top-[3px] right-[-5px] md:top-[3px] md:right-[-5px] w-[7px] md:w-[10px]"
+    />
+  </div>
+  <div class="content font-arca text-white text-center self-center pb-2 flex flex-col justify-center items-center">
+    <h3 class="objectif text-2xl md:text-5xl">OBJECTIF 1500</h3>
+    <h5 class="vous-aimez-frustration text-sm leading-none md:text-lg"
+      >Vous aimez Frustration ? Aidez-nous à <span class="md:text-purple md:bg-white md:rounded-md md:text-sm md:px-2 md:py-1 md:uppercase">grandir</span> !</h5
+    >
+    <div class="progress-bar-container flex h-[20px] md:h-[30px] mt-2 md:mt-4 w-full max-w-[50vw]">
+      <div class="progress-bar w-[73%] bg-white relative">
+        <span class="percent absolute text-purple text-[12px] md:text-lg right-[10px] top-[50%] translate-y-[-50%]">🔥 <span class="relative top-[1px]">73%</span></span>
+      </div>
+      <div class="progress-bar-empty bg-purple grow relative grid place-items-center">
+        <span class="label absolute text-white text-[10px] hidden md:visible md:text-xs whitespace-nowrap">✊ Déjà 750 abonnés</span>
+      </div>
+      <style>
+        .progress-bar::after {
+          content: "";
+          height: 100%;
+          width: 50px;
+          position: absolute;
+          border-radius: 50%;
+          background: white;
+          filter: blur(20px);
+          animation: move 2s steps(40) infinite;
+        }
+        @keyframes move {
+          0% {
+            left: 0%;
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            left: calc(100% - 50px);
+            opacity: 0;
+          }
+        }
+        .progress-bar-empty {
+          --progress-thickness-border: 2px;
+          border-top: var(--progress-thickness-border) dashed white;
+          border-right: var(--progress-thickness-border) dashed white;
+          border-bottom: var(--progress-thickness-border) dashed white;
+        }
+      </style>
+    </div>
   </div>
 </div>
-<style>
-  .content {
-    font-family: "Bebas Neue";
-    color: #fff;
-    text-align: center;
-    align-self: center;
-  }
-  .objectif {
-    font-size: clamp(1.3rem, 4.5vw, 3.5rem);
-  }
-
-  .vous-aimez-frustration {
-    font-size: clamp(0.7rem, 2.5vw, 2rem);
-  }
-
-  .progress-bar {
-    width: 60%;
-    height: clamp(10px, 2vw, 30px);
-    margin-top: clamp(5px, 1.5vw, 10px);
-    background: #fff;
-  }
-</style>

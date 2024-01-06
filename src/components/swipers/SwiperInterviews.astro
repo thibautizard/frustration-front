@@ -33,7 +33,7 @@ import { Image } from "astro:assets";
             alt={image.altText}
             width="600"
             height="300"
-            class="blurred-edges saturate-0 contrast-125 h-[300px] w-auto mb-2"
+            class="blurred-edges object-cover saturate-0 contrast-125 h-[300px] lg:h-[400px] xl:h-[500px] w-auto mb-2"
           />
           <h5 class="text-center text-xl h-[3lh] max-w-[40ch] font-open-sans px-2 text-balance">{title}</h5>
         </div>
@@ -65,9 +65,7 @@ import { Image } from "astro:assets";
     speed: 700,
     spaceBetween: 100,
     direction: "horizontal",
-    autoplay: {
-      delay: 3000
-    },
+
     pagination: {
       el: ".swiper-pagination"
     },

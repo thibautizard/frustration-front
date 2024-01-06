@@ -16,6 +16,7 @@ export default {
     },
     fontFamily: {
       bebas: "Bebas Neue",
+      arca: "'Arca Majora 3'",
       "open-sans": "Open Sans"
     }
   }
