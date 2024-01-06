@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import Footer from "../layout/Footer.astro";
+import { Image } from "astro:assets";
 import SwiperInterviews from "../components/swipers/SwiperInterviews.astro";
 import { getPosts, getInterviews } from "../lib/api";
 import { getImage } from "astro:assets";
+import newsletterStart from "./assets/newsletter_start.png";
+import newsletterEnd from "./assets/newsletter_end.png";
 import PostCardAstro from "../components/PostCard.astro";
 import BannerSubscription from "../components/banners/BannerSubscriptions.astro";
 import frustrationBackground from "./textures/frustration_wallpaper.webp";
@@ -16,12 +19,47 @@ const interviews = await getInterviews();
 <BaseLayout>
   <main class="overflow-scroll">
     <BannerSubscription />
-    <!-- Slider -->
-
-    <!-- Derniers articles + ... -->
     <div class="home-background h-fit pt-6 md:pt-8 lg:pt-10 xl:pt-12 2xl:pt-14 overflow-hidden">
+      <!-- Frustration Médias -->
+      <section class="max-w-[1600px] m-auto h-fit px-4 md:px-6 lg:px-8 xl:px-10">
+        <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[212px] mb-4 md:mb-2 lg:mb-4 xl:mb-4">Médias</h2>
+      </section>
+      <!-- Bannière newsletter -->
+      <section class="w-full relative overflow-hidden mb-10 bg-[linear-gradient(90deg,rgba(131,58,180,1)_0%,rgba(253,29,29,1)_50%,rgba(252,176,69,1)100%)] h-[275px] flex">
+        <!-- TODO Animation des miniatures -->
+        <Image
+          src={newsletterStart}
+          alt="Début de la newsletter"
+          width="300"
+          class="absolute shadow-lg right-0 rotate-[-15deg] top-[70%] opacity-50 translate-x-[-40%] translate-y-[-10%] lg:opacity-75 lg:top-[40%] lg:translate-x-[-100%] lg:translate-y-[-10%] w-[200px] lg:w-[300px]"
+        />
+        <Image
+          src={newsletterEnd}
+          alt="Début de la newsletter"
+          width="300"
+          class="absolute shadow-lg right-0 opacity-50 rotate-[-15deg] translate-x-[30%] translate-y-[-50%] lg:opacity-75 lg:top-[-50%] lg:translate-x-[-20%] lg:translate-y-[-30%] w-[200px] lg:w-[300px]"
+        />
+        <div class="wrapper relative max-w-[1600px] m-auto w-full px-4 md:px-6 lg:px-8 xl:px-10">
+          <div class="content max-w-[600px] text-white flex flex-col justify-center">
+            <h3 class="font-arca text-6xl relative overflow-hidden after:content-[''] after:absolute after:w-full after:bottom-[9px] after:ml-[10px] after:h-[3px] after:bg-white">Newsletter</h3>
+            <p class="mb-6">🗞️ Recevez régulièrement nos dernières publications !</p>
+            <input
+              type="email"
+              name="email"
+              placeholder="Entrez votre email ici"
+              id=""
+              class="h-[40px] text-black rounded-full mb-2 px-6 py-2 font-open-sans"
+            />
+            <button
+              type="button"
+              class="h-[40px] font-bebas text-xl uppercase rounded-full bg-[linear-gradient(90deg,rgba(252,176,69,1)_0%,rgba(253,29,29,1)_100%)]"
+              >Recevoir la newsletter</button
+            >
+          </div>
+        </div>
+      </section>
       <!-- List of last articles -->
-      <section class="max-w-[1800px] m-auto h-fit px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+      <section class="max-w-[1600px] m-auto h-fit px-4 md:px-6 lg:px-8 xl:px-10">
         <h2 class="title tracking-tighter w-content text-8xl/[80px] md:text-9xl lg:text-[172px] xl:text-[196px] 2xl:text-[212px] mb-4 md:mb-2 lg:mb-4 xl:mb-4">Derniers articles</h2>
         <!-- TODO // replace flex properties by this grid layout
             display: grid;

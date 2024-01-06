@@ -10,6 +10,7 @@ export default {
     },
     colors: {
       yellow: "#fff200",
+      red: "#700002",
       black: "#000",
       white: "#fff",
       purple: "#5c5db7"
